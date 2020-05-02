@@ -1,13 +1,15 @@
-.header {
-    position: fixed;
-    top: 0;
-    left: 0;
+.app-main {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+app-puzzle {
+    flex: 1;
+    margin: 16px;
 }
 
 .footer {
-    position: fixed;
-    bottom: 0;
-    left: 0;
     height: 32px;
     font-size: 16px;
     justify-content: end;

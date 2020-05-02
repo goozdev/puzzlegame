@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { MatIconModule } from '@angular/material/icon';
@@ -21,6 +22,7 @@ import { PuzzleComponent } from './puzzle/puzzle.component';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    FlexLayoutModule,
     FormsModule,
     MatIconModule,
     MatInputModule,

@@ -1,6 +1,6 @@
 {
   "name": "puzzlegame",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -16,6 +16,7 @@
     "@angular/common": "~9.1.4",
     "@angular/compiler": "~9.1.4",
     "@angular/core": "~9.1.4",
+    "@angular/flex-layout": "^9.0.0-beta.29",
     "@angular/forms": "~9.1.4",
     "@angular/material": "^9.2.2",
     "@angular/platform-browser": "~9.1.4",
