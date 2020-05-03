@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, TemplateRef } from '@angular/core';
 import { FormControl } from '@angular/forms';
 
 @Component({
@@ -7,14 +7,18 @@ import { FormControl } from '@angular/forms';
   styleUrls: ['./puzzle.component.scss']
 })
 export class PuzzleComponent implements OnInit {
-  answer1 = new FormControl('');
-  answer1Found = false;
+  @Input() puzzleId: number;
+  @Input() answer: string;
+  @Input() puzzleTemplate: TemplateRef<any>;
+
+  userAnswer = new FormControl('');
+  answerFound = false;
 
   constructor() { }
 
   ngOnInit(): void {
-    this.answer1.valueChanges.subscribe(value => {
-        this.answer1Found = this.compareAnswers(value, 'OSLO');
+    this.userAnswer.valueChanges.subscribe(value => {
+        this.answerFound = this.compareAnswers(value, this.answer);
     });
   }
 

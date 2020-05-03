@@ -1,27 +1,13 @@
-<br>
-<h2>Opdracht 1</h2>
+<h2>Opdracht {{puzzleId}}</h2>
 
-Voor de eerste vraag beginnen we met een <b>Spaans</b> thema. <br>
-Welke stad ontbreekt uit het volgende rijtje? We hopen dat je een munt uit de hints kan slaan.  
-
-<ol>
-    <li>Eén van de grootste metropolen ter wereld, wat resulteert in 2500 overstekende mensen per groen licht.</li>
-    <li>Een Amerikaanse president identificeerde zich met deze stad.</li>
-    <li>Niet de Kia maar de stad.</li>
-    <li>Geboortestad van een nobelprijswinnaar voor economie en naamgenoot van een Nederlandse televisie producent.</li>
-    <li>In het jaar na Lordi, werd hier met Water gewonnen.</li>
-    <li>Door deze hoofdstad loopt een rivier met dezelfde naam. Daarnaast heeft deze stad een stedenband met de stad nummer 4.</li>
-    <li>In 1812 kwam deze stad in handen van de Fransen, maar doordat de inwoners ervan de stad in brand staken, trokken zij zich snel terug.</li>  
-</ol>
+<ng-container *ngTemplateOutlet="puzzleTemplate"></ng-container>
 
 <form class="example-form">
   <mat-form-field class="example-full-width">
     <mat-label>Antwoord</mat-label>
-    <input matInput type="text" [formControl]="answer1">
+    <input matInput type="text" [formControl]="userAnswer">
   </mat-form-field>
 </form>
 
-
-
-{{ answer1Found }}
+{{ answerFound }}
 

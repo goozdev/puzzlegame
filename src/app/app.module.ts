@@ -12,11 +12,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PuzzleComponent } from './puzzle/puzzle.component';
+import { PuzzlesComponent } from './puzzles/puzzles.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    PuzzleComponent
+    PuzzleComponent,
+    PuzzlesComponent
   ],
   imports: [
     BrowserModule,
