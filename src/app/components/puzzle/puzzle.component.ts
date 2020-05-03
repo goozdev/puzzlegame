@@ -1,5 +1,6 @@
-import { Component, OnInit, Input, TemplateRef, OnChanges, ViewChild, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, Input, TemplateRef, OnChanges, ChangeDetectionStrategy } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { PuzzleService } from 'src/app/services/puzzle.service';
 
 @Component({
   selector: 'app-puzzle',
@@ -15,7 +16,7 @@ export class PuzzleComponent implements OnInit, OnChanges {
   userAnswer = new FormControl('');
   answerFound = false;
 
-  constructor() { }
+  constructor(private puzzleService: PuzzleService) { }
 
   ngOnInit(): void {
     this.userAnswer.valueChanges.subscribe(value => {
@@ -32,6 +33,14 @@ export class PuzzleComponent implements OnInit, OnChanges {
       return false;
     }
 
-    return answer.toUpperCase() === realAnswer.toUpperCase();
+    const result = answer.toUpperCase() === realAnswer.toUpperCase();
+
+    if (result) {
+      this.puzzleService.highestCompletedLevel = this.puzzleService.highestCompletedLevel
+        ? Math.max(this.puzzleId, this.puzzleService.highestCompletedLevel)
+        : this.puzzleId;
+    }
+
+    return result;
   }
 }

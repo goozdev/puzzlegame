@@ -2,8 +2,12 @@
     <app-puzzle [puzzleId]='pageIndex' [puzzleTemplate]="puzzleTemplates[pageIndex]" [answer]="puzzleAnswers[pageIndex]"></app-puzzle>
 
     <div fxLayout="row">
-        <button mat-raised-button color="accent" (click)="onPrevious()">Vorige</button>
-        <button class='button-next' mat-raised-button color="primary" (click)="onNext()">Volgende</button>
+        <ng-container *ngIf="pageIndex > 0">
+            <button mat-raised-button color="accent" (click)="onPrevious()">Vorige</button>
+        </ng-container>
+        <ng-container *ngIf="pageIndex < nPuzzles - 1">
+            <button class='button-next' mat-raised-button color="primary" [disabled]="nextDisabled" (click)="onNext()">Volgende</button>
+        </ng-container>
     </div>
 </div>
 

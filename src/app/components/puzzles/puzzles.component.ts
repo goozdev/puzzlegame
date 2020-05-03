@@ -1,4 +1,6 @@
 import { Component, OnInit, ViewChild, TemplateRef, AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
+import { PuzzleService } from 'src/app/services/puzzle.service';
+import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-puzzles',
@@ -7,8 +9,18 @@ import { Component, OnInit, ViewChild, TemplateRef, AfterViewInit, ChangeDetecti
   styleUrls: ['./puzzles.component.scss']
 })
 export class PuzzlesComponent implements OnInit, AfterViewInit {
-  pageIndex = 0;
+  _pageIndex = 0;
   nPuzzles = 6;
+  nextDisabled = true;
+
+  public get pageIndex() {
+    return this._pageIndex;
+  }
+
+  public set pageIndex(value: number) {
+    this._pageIndex = value;
+    this.refreshNextStatus();
+  }
 
   @ViewChild('puzzle1')
   private puzzle1: TemplateRef<any>;
@@ -39,9 +51,13 @@ export class PuzzlesComponent implements OnInit, AfterViewInit {
     'War Memorial of Korea'
   ];
 
-  constructor(private changeDetectorRef: ChangeDetectorRef) { }
+  constructor(private changeDetectorRef: ChangeDetectorRef, private puzzleService: PuzzleService) { }
 
   ngOnInit(): void {
+    this.puzzleService.highestCompletedLevel$
+    .pipe(filter(x => x != null)).subscribe(_ => {
+      this.refreshNextStatus();
+    });
   }
 
   ngAfterViewInit(): void {
@@ -55,7 +71,10 @@ export class PuzzlesComponent implements OnInit, AfterViewInit {
     ];
 
     this.changeDetectorRef.detectChanges();
-    console.log('after view init, this.puzzleTemplates:', this.puzzleTemplates);
+  }
+
+  refreshNextStatus() {
+    this.nextDisabled = this.pageIndex > this.puzzleService.highestCompletedLevel;
   }
 
   onPrevious(): void {
@@ -63,6 +82,8 @@ export class PuzzlesComponent implements OnInit, AfterViewInit {
   }
 
   onNext(): void {
-    this.pageIndex = Math.min(this.pageIndex + 1, this.nPuzzles - 1);
+    if (this.puzzleService.highestCompletedLevel >= this.pageIndex) {
+      this.pageIndex = Math.min(this.pageIndex + 1, this.nPuzzles - 1);
+    }
   }
 }
