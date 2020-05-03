@@ -1,4 +1,4 @@
-<div fxLayout="column">
+<div class="puzzles-div" fxLayout="column" fxLayoutAlign="space-between start" >
     <app-puzzle [puzzleId]='pageIndex' [puzzleTemplate]="puzzleTemplates[pageIndex]" [answer]="puzzleAnswers[pageIndex]"></app-puzzle>
 
     <div fxLayout="row">
@@ -8,6 +8,10 @@
 </div>
 
 <ng-template #puzzle1>
+    Welkom bij Puzzle Around the World! Wij zijn geïnspireerd door <a href="https://www.nieuwutrechtstoneel.nl/speurtocht/">Greg's Grote Online Speurtocht</a>. <br>
+    Om de antwoorden te vinden moet je gebruik maken van Google en Google Maps (en Streetview). <br>
+    We hopen met deze puzzels een leuke uitdaging te bieden in deze tijden van sociale isolatie. 😄<br><br>
+
     Voor de eerste vraag beginnen we met een <b>Spaans</b> thema. <br>
     Welke stad ontbreekt uit het volgende rijtje? We hopen dat je een munt uit de hints kan slaan.  
     
