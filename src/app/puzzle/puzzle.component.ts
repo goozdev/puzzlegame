@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, TemplateRef } from '@angular/core';
+import { Component, OnInit, Input, TemplateRef, OnChanges, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
 
 @Component({
@@ -6,7 +6,7 @@ import { FormControl } from '@angular/forms';
   templateUrl: './puzzle.component.html',
   styleUrls: ['./puzzle.component.scss']
 })
-export class PuzzleComponent implements OnInit {
+export class PuzzleComponent implements OnInit, OnChanges {
   @Input() puzzleId: number;
   @Input() answer: string;
   @Input() puzzleTemplate: TemplateRef<any>;
@@ -22,7 +22,15 @@ export class PuzzleComponent implements OnInit {
     });
   }
 
+  ngOnChanges(): void {
+    this.userAnswer.reset();
+  }
+
   compareAnswers(answer: string, realAnswer: string): boolean {
+    if (!answer || !realAnswer) {
+      return false;
+    }
+
     return answer.toUpperCase() === realAnswer.toUpperCase();
   }
 }
