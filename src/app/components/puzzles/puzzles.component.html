@@ -6,7 +6,7 @@
             <button mat-raised-button color="accent" (click)="onPrevious()">Vorige</button>
         </ng-container>
         <ng-container *ngIf="pageIndex < nPuzzles - 1">
-            <button class='button-next' mat-raised-button color="primary" [disabled]="nextDisabled" (click)="onNext()">Volgende</button>
+            <button class='button-next' mat-raised-button color="primary" [disabled]="!puzzleSolved" (click)="onNext()">Volgende</button>
         </ng-container>
     </div>
 </div>

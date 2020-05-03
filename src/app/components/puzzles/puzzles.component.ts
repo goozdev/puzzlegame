@@ -11,7 +11,7 @@ import { filter } from 'rxjs/operators';
 export class PuzzlesComponent implements OnInit, AfterViewInit {
   _pageIndex = 0;
   nPuzzles = 6;
-  nextDisabled = true;
+  puzzleSolved = false;
 
   public get pageIndex() {
     return this._pageIndex;
@@ -74,7 +74,7 @@ export class PuzzlesComponent implements OnInit, AfterViewInit {
   }
 
   refreshNextStatus() {
-    this.nextDisabled = this.pageIndex > this.puzzleService.highestCompletedLevel;
+    this.puzzleSolved = this.pageIndex <= this.puzzleService.highestCompletedLevel;
   }
 
   onPrevious(): void {
