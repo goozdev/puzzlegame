@@ -8,4 +8,9 @@ import { version } from '../../package.json';
 })
 export class AppComponent {
   version = version;
+  showVersion = false;
+
+  public switchShowVersion() {
+    this.showVersion = !this.showVersion;
+  }
 }
