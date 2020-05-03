@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild, TemplateRef, AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { PuzzleService } from 'src/app/services/puzzle.service';
-import { filter } from 'rxjs/operators';
+import { filter, take } from 'rxjs/operators';
 
 @Component({
   selector: 'app-puzzles',
@@ -54,10 +54,20 @@ export class PuzzlesComponent implements OnInit, AfterViewInit {
   constructor(private changeDetectorRef: ChangeDetectorRef, private puzzleService: PuzzleService) { }
 
   ngOnInit(): void {
+    // check local storage
+    const previousHighest = this.puzzleService.highestCompletedLevel;
+    console.log('previousHighest:', previousHighest);
+    // set page to relevant puzzle
+    if (previousHighest != null) {
+      this.pageIndex = previousHighest + 1;
+
+      console.log('set pageindex to: ', this.pageIndex);
+    }
+
     this.puzzleService.highestCompletedLevel$
-    .pipe(filter(x => x != null)).subscribe(_ => {
-      this.refreshNextStatus();
-    });
+      .pipe(filter(x => x != null)).subscribe(_ => {
+        this.refreshNextStatus();
+      });
   }
 
   ngAfterViewInit(): void {
