@@ -1,8 +1,9 @@
-import { Component, OnInit, Input, TemplateRef, OnChanges, ViewChild } from '@angular/core';
+import { Component, OnInit, Input, TemplateRef, OnChanges, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-puzzle',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './puzzle.component.html',
   styleUrls: ['./puzzle.component.scss']
 })

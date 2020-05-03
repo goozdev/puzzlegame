@@ -1,13 +1,12 @@
-<h2>Opdracht {{puzzleId + 1}}</h2>
+<div>
+  <h2>Opdracht {{puzzleId + 1}}</h2>
 
-<ng-container *ngTemplateOutlet="puzzleTemplate"></ng-container>
+  <ng-container *ngTemplateOutlet="puzzleTemplate"></ng-container>
 
-<form class="example-form">
-  <mat-form-field class="example-full-width">
-    <mat-label>Antwoord</mat-label>
-    <input matInput type="text" [formControl]="userAnswer">
-  </mat-form-field>
-</form>
-
-{{answerFound}}
-
+  <form class="example-form">
+    <mat-form-field class="example-full-width">
+      <mat-label>Antwoord</mat-label>
+      <input matInput type="text" [formControl]="userAnswer">
+    </mat-form-field>
+  </form>
+</div>

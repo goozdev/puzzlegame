@@ -1,12 +1,14 @@
-import { Component, OnInit, ViewChild, TemplateRef, AfterViewInit } from '@angular/core';
+import { Component, OnInit, ViewChild, TemplateRef, AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 
 @Component({
   selector: 'app-puzzles',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './puzzles.component.html',
   styleUrls: ['./puzzles.component.scss']
 })
 export class PuzzlesComponent implements OnInit, AfterViewInit {
   pageIndex = 0;
+  nPuzzles = 6;
 
   @ViewChild('puzzle1')
   private puzzle1: TemplateRef<any>;
@@ -23,6 +25,9 @@ export class PuzzlesComponent implements OnInit, AfterViewInit {
   @ViewChild('puzzle5')
   private puzzle5: TemplateRef<any>;
 
+  @ViewChild('puzzle6')
+  private puzzle6: TemplateRef<any>;
+
   puzzleTemplates: TemplateRef<any>[] = [];
 
   puzzleAnswers: string[] = [
@@ -30,10 +35,11 @@ export class PuzzlesComponent implements OnInit, AfterViewInit {
     'L\'Anse aux Meadows',
     'New York',
     '41',
-    'Ex. Yugoslavian military shelter for submarines'
+    'Ex. Yugoslavian military shelter for submarines',
+    'War Memorial of Korea'
   ];
 
-  constructor() { }
+  constructor(private changeDetectorRef: ChangeDetectorRef) { }
 
   ngOnInit(): void {
   }
@@ -44,9 +50,11 @@ export class PuzzlesComponent implements OnInit, AfterViewInit {
       this.puzzle2,
       this.puzzle3,
       this.puzzle4,
-      this.puzzle5
+      this.puzzle5,
+      this.puzzle6
     ];
 
+    this.changeDetectorRef.detectChanges();
     console.log('after view init, this.puzzleTemplates:', this.puzzleTemplates);
   }
 
@@ -55,6 +63,6 @@ export class PuzzlesComponent implements OnInit, AfterViewInit {
   }
 
   onNext(): void {
-    this.pageIndex++;
+    this.pageIndex = Math.min(this.pageIndex + 1, this.nPuzzles - 1);
   }
 }
