@@ -63,6 +63,13 @@ export class PuzzlesComponent implements OnInit, AfterViewInit {
   @ViewChild('puzzle6_hint2')
   private puzzle6_hint2: TemplateRef<any>;
 
+  @ViewChild('puzzle7')
+  private puzzle7: TemplateRef<any>;
+  @ViewChild('puzzle7_hint1')
+  private puzzle7_hint1: TemplateRef<any>;
+  @ViewChild('puzzle7_hint2')
+  private puzzle7_hint2: TemplateRef<any>;
+
   // tslint:enable: variable-name
 
   puzzles: Puzzle[] = [];
@@ -70,13 +77,6 @@ export class PuzzlesComponent implements OnInit, AfterViewInit {
   constructor(private changeDetectorRef: ChangeDetectorRef, private puzzleService: PuzzleService) { }
 
   ngOnInit(): void {
-    // check local storage
-    const previousHighest = this.puzzleService.highestCompletedLevel;
-    // set page to relevant puzzle
-    if (previousHighest != null) {
-      this.pageIndex = previousHighest + 1;
-    }
-
     this.puzzleService.highestCompletedLevel$
       .pipe(filter(x => x != null)).subscribe(_ => {
         this.refreshNextStatus();
@@ -119,7 +119,20 @@ export class PuzzlesComponent implements OnInit, AfterViewInit {
       template: this.puzzle6,
       hintTemplates: [this.puzzle6_hint1, this.puzzle6_hint2],
       answer: 'War Memorial of Korea'
+    },
+    {
+      id: 6,
+      template: this.puzzle7,
+      hintTemplates: [this.puzzle7_hint1, this.puzzle7_hint2],
+      answer: 'Abbey Road Zebra Crossing'
     }];
+
+    // check local storage
+    const previousHighest = this.puzzleService.highestCompletedLevel;
+    // set page to relevant puzzle
+    if (previousHighest != null) {
+      this.pageIndex = Math.min(this.puzzles.length + -1, previousHighest + 1);
+    }
 
     this.changeDetectorRef.detectChanges();
   }

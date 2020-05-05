@@ -20,6 +20,10 @@ export class PuzzleComponent implements OnInit, OnChanges {
   constructor(private puzzleService: PuzzleService) { }
 
   ngOnInit(): void {
+    if (this.puzzleService.highestCompletedLevel >= this.puzzle.id) {
+      this.userAnswer.setValue(this.puzzle.answer);
+    }
+
     this.userAnswer.valueChanges.subscribe(value => {
         this.answerFound = this.compareAnswers(value, this.puzzle.answer);
     });
