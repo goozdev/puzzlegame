@@ -21,7 +21,7 @@ export class PuzzleComponent implements OnInit, OnChanges {
 
   ngOnInit(): void {
     this.userAnswer.valueChanges.subscribe(value => {
-      this.answerFound = this.compareAnswers(value, this.puzzle.answer);
+      this.answerFound = this.compareAnswers(value);
     });
     this.resetAnswer();
   }
@@ -37,18 +37,18 @@ export class PuzzleComponent implements OnInit, OnChanges {
 
   resetAnswer() {
     if (this.puzzleService.highestCompletedLevel >= this.puzzle.id) {
-      this.userAnswer.setValue(this.puzzle.answer);
+      this.userAnswer.setValue(this.puzzle.answers[0]); // first answer has prio
     } else {
       this.userAnswer.reset();
     }
   }
 
-  compareAnswers(answer: string, realAnswer: string): boolean {
-    if (!answer || !realAnswer) {
+  compareAnswers(answer: string): boolean {
+    if (!answer) {
       return false;
     }
 
-    const result = answer.toUpperCase() === realAnswer.toUpperCase();
+    const result = this.puzzle.answers.findIndex(item => answer.toUpperCase() === item.toUpperCase()) > -1;
 
     if (result) {
       this.puzzleService.highestCompletedLevel = this.puzzleService.highestCompletedLevel

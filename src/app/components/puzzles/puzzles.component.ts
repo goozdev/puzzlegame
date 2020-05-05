@@ -95,49 +95,49 @@ export class PuzzlesComponent implements OnInit, AfterViewInit {
       id: 0,
       template: this.puzzle1,
       hintTemplates: [this.puzzle1_hint1, this.puzzle1_hint2],
-      answer: 'Oslo'
+      answers: ['Oslo']
     },
     {
       id: 1,
       template: this.puzzle2,
       hintTemplates: [this.puzzle2_hint1, this.puzzle2_hint2],
-      answer: 'L\'Anse aux Meadows'
+      answers: ['L\'Anse aux Meadows']
     },
     {
       id: 2,
       template: this.puzzle3,
       hintTemplates: [this.puzzle3_hint1],
-      answer: 'New York'
+      answers: ['New York']
     },
     {
       id: 3,
       template: this.puzzle4,
       hintTemplates: [this.puzzle4_hint1, this.puzzle4_hint2],
-      answer: '41'
+      answers: ['41']
     },
     {
       id: 4,
       template: this.puzzle5,
       hintTemplates: [this.puzzle5_hint1, this.puzzle5_hint2],
-      answer: 'Ex. Yugoslavian military shelter for submarines'
+      answers: ['Ex. Yugoslavian military shelter for submarines']
     },
     {
       id: 5,
       template: this.puzzle6,
       hintTemplates: [this.puzzle6_hint1, this.puzzle6_hint2],
-      answer: 'War Memorial of Korea'
+      answers: ['War Memorial of Korea']
     },
     {
       id: 6,
       template: this.puzzle7,
       hintTemplates: [this.puzzle7_hint1, this.puzzle7_hint2],
-      answer: 'Abbey Road Zebra Crossing'
+      answers: ['Abbey Road Zebra Crossing']
     },
     {
       id: 7,
       template: this.puzzle8,
       hintTemplates: [this.puzzle8_hint1, this.puzzle8_hint2],
-      answer: 'River Etive' // todo: support multiple answers
+      answers: ['River Etive', 'Etive'] // todo: support multiple answers
     }];
 
     // check local storage
