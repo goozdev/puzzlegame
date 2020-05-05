@@ -1,7 +1,7 @@
 <div>
   <div class='header-div'>
     <h2>Opdracht {{puzzle.id + 1}}</h2>
-    <mat-icon class='correct-icon' *ngIf="answerFound">check_circle</mat-icon>
+    <mat-icon [matTooltip]='"Dit level is voltooid!"' class='correct-icon' *ngIf="puzzleService.highestCompletedLevel >= puzzle.id">check_circle</mat-icon>
   </div>
 
   <div>
@@ -15,6 +15,7 @@
       <mat-form-field class="answer-form-field">
         <mat-label>Antwoord</mat-label>
         <input matInput type="text" [formControl]="userAnswer">
+        <mat-icon [matTooltip]='"Correct!"' class="correct-icon" *ngIf="answerFound" matSuffix>check_circle</mat-icon>
       </mat-form-field>
     </form>
   </div>

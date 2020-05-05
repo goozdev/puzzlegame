@@ -8,6 +8,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import {MatTooltipModule} from '@angular/material/tooltip'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -32,6 +33,7 @@ import { PuzzlesComponent } from './components/puzzles/puzzles.component';
     MatInputModule,
     MatFormFieldModule,
     MatToolbarModule,
+    MatTooltipModule,
     ReactiveFormsModule
   ],
   providers: [],

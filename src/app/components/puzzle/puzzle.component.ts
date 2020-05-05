@@ -17,7 +17,7 @@ export class PuzzleComponent implements OnInit, OnChanges {
   userAnswer = new FormControl('');
   answerFound = false;
 
-  constructor(private puzzleService: PuzzleService) { }
+  constructor(public puzzleService: PuzzleService) { }
 
   ngOnInit(): void {
     this.userAnswer.valueChanges.subscribe(value => {
