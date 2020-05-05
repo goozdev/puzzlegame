@@ -20,22 +20,27 @@ export class PuzzleComponent implements OnInit, OnChanges {
   constructor(private puzzleService: PuzzleService) { }
 
   ngOnInit(): void {
-    if (this.puzzleService.highestCompletedLevel >= this.puzzle.id) {
-      this.userAnswer.setValue(this.puzzle.answer);
-    }
-
     this.userAnswer.valueChanges.subscribe(value => {
-        this.answerFound = this.compareAnswers(value, this.puzzle.answer);
+      this.answerFound = this.compareAnswers(value, this.puzzle.answer);
     });
+    this.resetAnswer();
   }
 
   ngOnChanges(): void {
-    this.userAnswer.reset();
-
+    this.resetAnswer();
     this.hintsVisible = [];
+
     this.puzzle.hintTemplates.forEach(_ => {
       this.hintsVisible.push(false);
     });
+  }
+
+  resetAnswer() {
+    if (this.puzzleService.highestCompletedLevel >= this.puzzle.id) {
+      this.userAnswer.setValue(this.puzzle.answer);
+    } else {
+      this.userAnswer.reset();
+    }
   }
 
   compareAnswers(answer: string, realAnswer: string): boolean {

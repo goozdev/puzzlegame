@@ -1,3 +1,19 @@
+.header-div {
+    margin: 0 0 16px auto;
+    display: flex;
+    align-items: center;
+
+    h2 {
+        margin: 0;
+    }
+}
+
+.correct-icon {
+    font-size: 24px;
+    color: #2fa72f;
+    margin-left: 8px;
+}
+
 .hint-div {
     margin: 8px 0;
 }
@@ -7,7 +23,6 @@
     align-items: baseline;
 }
 
-.correct-div {
-    font-weight: bold;
-    color: #3f51b5;
+.answer-form-field {
+    width: 320px
 }

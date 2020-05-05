@@ -1,5 +1,8 @@
 <div>
-  <h2>Opdracht {{puzzle.id + 1}}</h2>
+  <div class='header-div'>
+    <h2>Opdracht {{puzzle.id + 1}}</h2>
+    <mat-icon class='correct-icon' *ngIf="answerFound">check_circle</mat-icon>
+  </div>
 
   <div>
     <ng-container *ngTemplateOutlet="puzzle.template"></ng-container>
@@ -8,14 +11,12 @@
   <br>
 
   <div class='answer-div'>
-    <form class="example-form">
-      <mat-form-field class="example-full-width">
+    <form>
+      <mat-form-field class="answer-form-field">
         <mat-label>Antwoord</mat-label>
         <input matInput type="text" [formControl]="userAnswer">
       </mat-form-field>
     </form>
-
-    <div class="correct-div" *ngIf="answerFound">Dit is correct!</div>
   </div>
 
   <ng-container *ngFor="let hintTemplate of puzzle.hintTemplates; let i = index">
