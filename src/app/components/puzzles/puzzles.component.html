@@ -5,8 +5,13 @@
         <ng-container>
             <button [disabled]="pageIndex === 0" mat-raised-button color="accent" (click)="onPrevious()">Vorige</button>
         </ng-container>
-        <ng-container *ngIf="pageIndex < puzzles.length - 1">
-            <button class='button-next' mat-raised-button color="primary" [disabled]="!puzzleSolved" (click)="onNext()">Volgende</button>
+        <ng-container>
+            <button class='button-next' mat-raised-button color="primary" [disabled]="!puzzleSolved || pageIndex >= puzzles.length - 1" (click)="onNext()">Volgende</button>
+        </ng-container>
+        <ng-container *ngIf="pageIndex >= puzzles.length - 1">
+            <div class='end-div'>
+                Gefeliciteerd, je hebt het gehaald! Nieuwe puzzels volgen snel weer...
+            </div>
         </ng-container>
     </div>
 </div>
