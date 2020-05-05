@@ -8,7 +8,7 @@
         <ng-container>
             <button class='button-next' mat-raised-button color="primary" [disabled]="!puzzleSolved || pageIndex >= puzzles.length - 1" (click)="onNext()">Volgende</button>
         </ng-container>
-        <ng-container *ngIf="pageIndex >= puzzles.length - 1">
+        <ng-container *ngIf="pageIndex >= puzzles.length - 1 && puzzleSolved">
             <div class='end-div'>
                 Gefeliciteerd, je hebt het gehaald! Nieuwe puzzels volgen snel weer...
             </div>
@@ -192,5 +192,50 @@
 </ng-template>
 
 <ng-template #puzzle9>
-    
+    Na te hebben genoten van het prachtige uitzicht nemen we de weg naar het noordoosten.
+    We rijden langs de bekende waterval van deze rivier.
+    Net na het bruggetje staat links een bordje.
+    Wat staat hierop?
+
+    <ol type="A">
+        <li>Passeerplaats -> Ga straks op de hoofdweg naar links.</li>
+        <li>Je hebt voorrang op tegenliggers -> Ga straks op de hoofdweg naar rechts.</li>
+    </ol>
+
+    We rijden een klein kwartiertje verder tot we bij een stadje komen en de weg langs het water gaat lopen.
+    Waar verwijst dit water naar?
+
+    <ol type="A">
+        <li>Leven -> Neem bij de rotonde verderop de eerste afslag.</li>
+        <li>Dood -> Neem bij de rotonde verderop de tweede afslag.</li>
+    </ol>
+
+    Vanaf de rotonde (hint 1) rijden we 16 mijl, passeren een imposante berg en komen dan bij het volgende stadje aan (hiervoor moeten we wel even linksaf bij de destilleerder vernoemd naar de berg).
+    In het stadje bevindt zich een goddelijke trap.
+    Voor wie is die trap gemaakt? 
+
+    <ol type="A">
+        <li>Goden -> We rijden naar het westen op de A830.</li>
+        <li>Mensen -> We beklimmen de berg de we net gepasseerd zijn.</li>
+        <li>Boten -> We gaan terug naar de weg waar we vandaan kwamen en rijden verder in noordelijke richting.</li>
+    </ol>
+
+    Bij de kruising met de volgende hoofdweg (hint 2) rijden we achter de auto aan met de rode kano op het dak.
+    We slaan NIET af bij de drie statige, stalen mannen en rijden een kleine 20 minuten door op de hoofdweg.
+    Bij de splitsing die hier volgt merken we dat de tank langzaam leeg begint te raken, dus gooien hem vol en rijden verder op de weg die we waren ingeslagen.
+    We rijden snel door want we beginnen de eindbestemming van deze opdracht te naderen.
+    Als we weer tegen een groot (en bekend) meer aanrijden, komen we ook een stadje tegen.
+    De eindbestemming van deze opdracht is een café in dit stadje, maar welk café is het?
+    Je komt er door in de juiste maand op visite te gaan.
+
+    <ol type="A">
+        <li>Juni -> We gaan met de bocht van de hoofdweg mee naar links, twee bruggen over en direct na de supermarkt en benzinestation links zit het café.</li>
+        <li>Juli -> We slaan bij de bocht van de hoofdweg af (Glendoe Rd), gaan voor de kerk naar links en rijden helemaal door tot het water voor het café.</li>
+        <li>Augustus -> We gaan met de bocht van de hoofdweg mee naar links, na het eerste bruggetje rechtsaf en het café zit aan de linkerhand.</li>
+    </ol>
+
+    Bij welk cafeetje ben je terecht gekomen?
 </ng-template>
+
+<ng-template #puzzle9_hint1>Let op, men rijdt hier links!</ng-template>
+<ng-template #puzzle9_hint2>De afslagen die op de verschillende plekken worden beschreven, zijn over het algemeen alleen grotere kruisingen, behalve als anders beschreven.</ng-template>

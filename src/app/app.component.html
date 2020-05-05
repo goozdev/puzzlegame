@@ -1,18 +1,17 @@
-<div class='app-main'>
-  <header>
+<div fxLayout="column" fxFlexFill>
+
     <mat-toolbar color="primary" class="header">
       <span>Puzzle Around the World</span>
     </mat-toolbar>
-  </header>
 
-  <app-puzzles></app-puzzles>
 
-  <footer>
+  <app-puzzles fxFlex></app-puzzles>
+
     <mat-toolbar class='footer'>
       <span *ngIf="showVersion">Version: {{ version }}</span>
       <button mat-button (click)="switchShowVersion()">
         <mat-icon>extension</mat-icon>
       </button>
     </mat-toolbar>
-  </footer>
+
 </div>

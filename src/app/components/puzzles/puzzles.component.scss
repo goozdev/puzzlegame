@@ -1,5 +1,6 @@
 .puzzles-div {
-    height: calc(100vh - 132px)
+    height: calc(100vh - 132px);
+    overflow: auto
 }
 
 .button-next {
