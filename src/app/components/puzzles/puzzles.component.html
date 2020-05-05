@@ -1,11 +1,11 @@
-<div class="puzzles-div" fxLayout="column" fxLayoutAlign="space-between start" >
-    <app-puzzle [puzzleId]='pageIndex' [puzzleTemplate]="puzzleTemplates[pageIndex]" [answer]="puzzleAnswers[pageIndex]"></app-puzzle>
-
+<div *ngIf="puzzles.length" class="puzzles-div" fxLayout="column" fxLayoutAlign="space-between start" >
+    <!-- <app-puzzle [puzzleId]='pageIndex' [puzzleTemplate]="puzzleTemplates[pageIndex]" [answer]="puzzleAnswers[pageIndex]"></app-puzzle> -->
+    <app-puzzle [puzzle]="puzzles[pageIndex]"></app-puzzle>
     <div fxLayout="row">
-        <ng-container *ngIf="pageIndex > 0">
-            <button mat-raised-button color="accent" (click)="onPrevious()">Vorige</button>
+        <ng-container>
+            <button [disabled]="pageIndex === 0" mat-raised-button color="accent" (click)="onPrevious()">Vorige</button>
         </ng-container>
-        <ng-container *ngIf="pageIndex < nPuzzles - 1">
+        <ng-container *ngIf="pageIndex < puzzles.length - 1">
             <button class='button-next' mat-raised-button color="primary" [disabled]="!puzzleSolved" (click)="onNext()">Volgende</button>
         </ng-container>
     </div>
@@ -30,6 +30,14 @@
     </ol>
 </ng-template>
 
+<ng-template #puzzle1_hint1>
+    <img src="/assets/puzzle1_hint1.jpeg" alt="Salvador Dalí" style="max-width: 10%; position: fixed; top: 128px; left: 800px">
+</ng-template>
+
+<ng-template #puzzle1_hint2>
+    De steden hinten naar de verschillende personages van de eerste serie van Casa de Papel. 
+</ng-template>
+
 <ng-template #puzzle2>
     In Oslo komen we aan met de trein aan op het centraal station.
     Als we uit het station komen, lopen we links langs het reuzenrad, steken de trambaan over en gaan een stukje verder rechtsaf de straat van Charles en William in.
@@ -39,6 +47,14 @@
     Na aankomst bezoeken we het museum in de vorm van een kruis, stappen in één van de boten en gaan ruim 1000 jaar terug in de tijd.
     Met een bekende ontdekkingsreiziger uit die tijd reizen we naar het westen, tot we voet aan nieuw land zetten. <br><br>
     Waar doen we dit? 
+</ng-template>
+
+<ng-template #puzzle2_hint1>
+    De boot die we nemen, vertrekt van de Raadhuisbrug.
+</ng-template>
+
+<ng-template #puzzle2_hint2>
+    De ontdekkingsreiziger heeft dezelfde achternaam als een oude Zweedse telefonie gigant.
 </ng-template>
 
 <ng-template #puzzle3>
@@ -53,6 +69,10 @@
     In welke stad zijn we nu aangekomen? 
 </ng-template>
 
+<ng-template #puzzle3_hint1>
+    Cryptisch en iets anders geschreven, wat is bekend geworden van no 5?
+</ng-template>
+
 <ng-template #puzzle4>
     Hier op Broadway komen we er natuurlijk niet onderuit om een musical te bezoeken.
     De musical die wij bezoeken, is gebaseerd op een verhaal uit 1001 nacht, heeft de boodschap dat het niet gaat om rijkdom en status maar juist om het innerlijk en heeft sinds kort een beetje Nederlands randje.
@@ -60,6 +80,14 @@
     Tussen alle grote Amerikaanse filmsterren zijn we nu op zoek naar de geboorteplaats van de ster bovenop de fontein.
     Ook in deze plaats bezoeken we een museum ten zuiden van de International Cruise Ship Terminal. <br><br>
     Welk getal staat op het grote grijze gebouw geschreven?
+</ng-template>
+
+<ng-template #puzzle4_hint1>
+    Het gaat om één van de bekendste dragqueens van Amerika.
+</ng-template>
+
+<ng-template #puzzle4_hint2>
+    Hij heeft zelfs een speciale race voor dragqueens georganiseerd.
 </ng-template>
 
 <ng-template #puzzle5>
@@ -70,6 +98,14 @@
     Op dit eiland komen we aan in de hoofdstad (met dezelfde naam als het eiland) en na een lekker visje te hebben gegeten in de haven, rijden we langs de kust naar het noorden.
     We passeren een halve ronde toren en rijden verder tot we een inham zien met een imposant bouwwerk en verleden. <br><br>
     Wat is de naam van dit bouwwerk? 
+</ng-template>
+
+<ng-template #puzzle5_hint1>
+    Het gaat om een filmeiland, en we zijn op zoek naar het eiland waar deze film is opgenomen.
+</ng-template>
+
+<ng-template #puzzle5_hint2>
+    Dit is heel letterlijk: namelijk het vervolg van de film. En dus ook het vervolg van onze puzzeltocht.
 </ng-template>
 
 <ng-template #puzzle6>
@@ -85,4 +121,12 @@
 
     In deze stad bezoeken we het museum (en tegelijk de gedenkplaats) van de meest bekende oorlog van het land. <br><br>
     Hoe heet dit museum?
+</ng-template>
+
+<ng-template #puzzle6_hint1>
+    Pak een oude rekenmachine en voer daar de cijfers in.
+</ng-template>
+
+<ng-template #puzzle6_hint2>
+    Draai de rekenmachine om. 
 </ng-template>

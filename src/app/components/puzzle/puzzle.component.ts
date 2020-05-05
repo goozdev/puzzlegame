@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, TemplateRef, OnChanges, ChangeDetectionStrategy } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { PuzzleService } from 'src/app/services/puzzle.service';
+import { Puzzle } from 'src/app/models/puzzle';
 
 @Component({
   selector: 'app-puzzle',
@@ -9,9 +10,9 @@ import { PuzzleService } from 'src/app/services/puzzle.service';
   styleUrls: ['./puzzle.component.scss']
 })
 export class PuzzleComponent implements OnInit, OnChanges {
-  @Input() puzzleId: number;
-  @Input() answer: string;
-  @Input() puzzleTemplate: TemplateRef<any>;
+  @Input() puzzle: Puzzle;
+
+  hintsVisible: boolean[];
 
   userAnswer = new FormControl('');
   answerFound = false;
@@ -20,12 +21,17 @@ export class PuzzleComponent implements OnInit, OnChanges {
 
   ngOnInit(): void {
     this.userAnswer.valueChanges.subscribe(value => {
-        this.answerFound = this.compareAnswers(value, this.answer);
+        this.answerFound = this.compareAnswers(value, this.puzzle.answer);
     });
   }
 
   ngOnChanges(): void {
     this.userAnswer.reset();
+
+    this.hintsVisible = [];
+    this.puzzle.hintTemplates.forEach(_ => {
+      this.hintsVisible.push(false);
+    });
   }
 
   compareAnswers(answer: string, realAnswer: string): boolean {
@@ -37,8 +43,8 @@ export class PuzzleComponent implements OnInit, OnChanges {
 
     if (result) {
       this.puzzleService.highestCompletedLevel = this.puzzleService.highestCompletedLevel
-        ? Math.max(this.puzzleId, this.puzzleService.highestCompletedLevel)
-        : this.puzzleId;
+        ? Math.max(this.puzzle.id, this.puzzleService.highestCompletedLevel)
+        : this.puzzle.id;
     }
 
     return result;

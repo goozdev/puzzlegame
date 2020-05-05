@@ -1,14 +1,28 @@
 <div>
-  <h2>Opdracht {{puzzleId + 1}}</h2>
+  <h2>Opdracht {{puzzle.id + 1}}</h2>
 
-  <ng-container *ngTemplateOutlet="puzzleTemplate"></ng-container>
+  <div>
+    <ng-container *ngTemplateOutlet="puzzle.template"></ng-container>
+  </div>
 
-  <form class="example-form">
-    <mat-form-field class="example-full-width">
-      <mat-label>Antwoord</mat-label>
-      <input matInput type="text" [formControl]="userAnswer">
-    </mat-form-field>
-  </form>
+  <div class='answer-div'>
+    <form class="example-form">
+      <mat-form-field class="example-full-width">
+        <mat-label>Antwoord</mat-label>
+        <input matInput type="text" [formControl]="userAnswer">
+      </mat-form-field>
+    </form>
 
-  <div *ngIf="answerFound">Dit is correct!</div>
+    <div class="correct-div" *ngIf="answerFound">Dit is correct!</div>
+  </div>
+
+  <ng-container *ngFor="let hintTemplate of puzzle.hintTemplates; let i = index">
+    <div class='hint-div'>
+      <button *ngIf="!this.hintsVisible[i]" mat-raised-button color="accent" (click)="this.hintsVisible[i]=true">Hint {{puzzle.hintTemplates.length > 1 ? i + 1 : ''}}</button>
+      <ng-container *ngIf="this.hintsVisible[i]">
+        <ng-container #hint *ngTemplateOutlet="hintTemplate"></ng-container>
+      </ng-container>
+    </div>
+  </ng-container>
+
 </div>
