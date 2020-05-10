@@ -93,6 +93,18 @@ export class PuzzlesComponent implements OnInit, AfterViewInit {
 
   @ViewChild('puzzle11')
   private puzzle11: TemplateRef<any>;
+
+  @ViewChild('puzzle12')
+  private puzzle12: TemplateRef<any>;
+  @ViewChild('puzzle12_hint1')
+  private puzzle12_hint1: TemplateRef<any>;
+
+  @ViewChild('puzzle13')
+  private puzzle13: TemplateRef<any>;
+  @ViewChild('puzzle13_hint1')
+  private puzzle13_hint1: TemplateRef<any>;
+  @ViewChild('puzzle13_hint2')
+  private puzzle13_hint2: TemplateRef<any>;
   // tslint:enable: variable-name
 
   puzzles: Puzzle[] = [];
@@ -172,6 +184,18 @@ export class PuzzlesComponent implements OnInit, AfterViewInit {
       template: this.puzzle11,
       hintTemplates: [],
       answers: ['Mangatoetoe']
+    },
+    {
+      id: 11,
+      template: this.puzzle12,
+      hintTemplates: [this.puzzle12_hint1],
+      answers: ['Vestre kirkegård', 'Vestre kirkegard', 'Vestre cemetery']
+    },
+    {
+      id: 12,
+      template: this.puzzle13,
+      hintTemplates: [this.puzzle13_hint1, this.puzzle13_hint2],
+      answers: ['Radisson RED Cape Town Roof Bar']
     }];
 
     // check local storage
