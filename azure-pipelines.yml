@@ -17,5 +17,5 @@ steps:
 
 - script: |
     npm install
-    npm run deploy -- --no-silent
+    npm run deploy -- --repo=https://github.com/frankiee88/puzzlegame.git --name="frankiee88" --email=fgoossen@outlook.com
   displayName: 'npm install and deploy'
