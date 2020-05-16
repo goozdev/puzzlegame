@@ -105,6 +105,41 @@ export class PuzzlesComponent implements OnInit, AfterViewInit {
   private puzzle13_hint1: TemplateRef<any>;
   @ViewChild('puzzle13_hint2')
   private puzzle13_hint2: TemplateRef<any>;
+
+  @ViewChild('puzzle14')
+  private puzzle14: TemplateRef<any>;
+  @ViewChild('puzzle14_hint1')
+  private puzzle14_hint1: TemplateRef<any>;
+  @ViewChild('puzzle14_hint2')
+  private puzzle14_hint2: TemplateRef<any>;
+
+  @ViewChild('puzzle15')
+  private puzzle15: TemplateRef<any>;
+  @ViewChild('puzzle15_hint1')
+  private puzzle15_hint1: TemplateRef<any>;
+  @ViewChild('puzzle15_hint2')
+  private puzzle15_hint2: TemplateRef<any>;
+
+  @ViewChild('puzzle16')
+  private puzzle16: TemplateRef<any>;
+  @ViewChild('puzzle16_hint1')
+  private puzzle16_hint1: TemplateRef<any>;
+  @ViewChild('puzzle16_hint2')
+  private puzzle16_hint2: TemplateRef<any>;
+
+  @ViewChild('puzzle17')
+  private puzzle17: TemplateRef<any>;
+  @ViewChild('puzzle17_hint1')
+  private puzzle17_hint1: TemplateRef<any>;
+  @ViewChild('puzzle17_hint2')
+  private puzzle17_hint2: TemplateRef<any>;
+
+  @ViewChild('puzzle18')
+  private puzzle18: TemplateRef<any>;
+  @ViewChild('puzzle18_hint1')
+  private puzzle18_hint1: TemplateRef<any>;
+  @ViewChild('puzzle18_hint2')
+  private puzzle18_hint2: TemplateRef<any>;
   // tslint:enable: variable-name
 
   puzzles: Puzzle[] = [];
@@ -196,6 +231,36 @@ export class PuzzlesComponent implements OnInit, AfterViewInit {
       template: this.puzzle13,
       hintTemplates: [this.puzzle13_hint1, this.puzzle13_hint2],
       answers: ['Radisson RED Cape Town Roof Bar']
+    },
+    {
+      id: 13,
+      template: this.puzzle14,
+      hintTemplates: [this.puzzle14_hint1, this.puzzle14_hint2],
+      answers: ['Madurai']
+    },
+    {
+      id: 14,
+      template: this.puzzle15,
+      hintTemplates: [this.puzzle15_hint1, this.puzzle15_hint2],
+      answers: ['JanSport']
+    },
+    {
+      id: 15,
+      template: this.puzzle16,
+      hintTemplates: [this.puzzle16_hint1, this.puzzle16_hint2],
+      answers: ['Witte Huis', 'Het Witte Huis', 'White House', 'The White House']
+    },
+    {
+      id: 16,
+      template: this.puzzle17,
+      hintTemplates: [this.puzzle17_hint1, this.puzzle17_hint2],
+      answers: ['Goud']
+    },
+    {
+      id: 17,
+      template: this.puzzle18,
+      hintTemplates: [this.puzzle18_hint1, this.puzzle18_hint2],
+      answers: ['Robert Langdon', 'Langdon']
     }];
 
     // check local storage
